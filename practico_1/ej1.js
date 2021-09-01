@@ -12,6 +12,13 @@
 const MAX = 10;
 
 /**
+ * @returns número random entre 1 y MAX
+ */
+ const random = () => {
+  return Math.ceil(Math.random() * MAX);
+};
+
+/**
  * @param { Array } arr
  * @returns suma total del arreglo
  */
@@ -51,13 +58,6 @@ const getMaxMatriz = (matriz) => {
     if (maxArr > max) max = maxArr;
   });
   return max;
-};
-
-/**
- * @returns número random entre 1 y MAX
- */
-const random = () => {
-  return Math.ceil(Math.random() * MAX);
 };
 
 /**
