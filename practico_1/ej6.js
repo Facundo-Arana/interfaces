@@ -2,6 +2,7 @@
 6. Pintar un rectángulo en pantalla, utilizando tres o cuatro colores en un gradiente.
  Los tres colores deben ser armonías tonales. Puede ser en el eje X o Y.
  */
+
 // canvas,  contexto y dimensiones
 let cv = document.getElementById("canvas");
 let ctx = cv.getContext("2d");
@@ -9,7 +10,7 @@ let width = cv.width;
 let height = cv.height;
 let imageData = ctx.createImageData(width, height);
 
-// var my_gradient=ctx.createLinearGradient(0, 0, 170, 0);
+// var my_gradient = ctx.createLinearGradient(0, 0, 170, 0);
 
 let red = 0;
 let green = 0;
@@ -20,13 +21,13 @@ drawRect(imageData, red, green, blue, alpha);
 
 function drawRect(imageData, r, g, b, a) {  
     
-  let coeficiente = 255 / (width * 0.6);
+  let coeficiente = 255 / (width * 0.5);
   for (let x = 0; x < width; x++) {
     if (x <= width * 0.3) {
       r = coeficiente * x;
       g = coeficiente * x;
     } else if (x <= width * 0.6) {
-        coeficiente = 255 / (width * 0.3);
+        coeficiente = 255 / (width * 0.4);
         if (g > 0) {
             g = g - coeficiente;
         }

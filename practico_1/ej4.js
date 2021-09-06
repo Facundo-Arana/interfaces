@@ -10,12 +10,12 @@ let width = cv.width;
 let height = cv.height;
 let imageData = ctx.createImageData(width, height);
 
-let red = 255;
-let green = 255;
-let blue = 255;
-let alpha = 255;
+let r = 255;
+let g = 255;
+let b = 255;
+let a = 255;
 
-drawRect(imageData, red, green, blue, alpha);
+drawRect(imageData, r, g, b, a);
 
 function drawRect(imageData, r, g, b, a) {
 
