@@ -1,7 +1,9 @@
-"use strict";
-/**
- * 4. Especificar la función para pintar un cuadrado utilizando un gradiente.
- */
+/*
+5. Pintar un rectángulo en pantalla, utilizando tres colores en un gradiente: 
+De negro a amarillo en la primera mitad del ancho del rectángulo
+De amarillo a rojo, en la segunda mitad.
+Por otro lado, en Y el degrade se mantiene constante.
+*/
 
 // canvas,  contexto y dimensiones
 let cv = document.getElementById("canvas");
@@ -10,26 +12,26 @@ let width = cv.width;
 let height = cv.height;
 let imageData = ctx.createImageData(width, height);
 
-let red = 255;
-let green = 255;
-let blue = 255;
+// var my_gradient=ctx.createLinearGradient(0, 0, 170, 0);
+
+let red = 0;
+let green = 0;
+let blue = 0;
 let alpha = 255;
 
 drawRect(imageData, red, green, blue, alpha);
 
 function drawRect(imageData, r, g, b, a) {
-
-  
+  let coeficiente = 255 / (width / 2);
   for (let x = 0; x < width; x++) {
     if (x <= width / 2) {
-      let coeficiente = 255 / (width / 2);
       r = coeficiente * x;
       g = coeficiente * x;
-      b = coeficiente * x;
+    } else {
+      g = g - coeficiente;
     }
-    
     for (let y = 0; y < height; y++) {
-      setPixel(imageData, y, x, r, g, b, a);
+      setPixel(imageData, x, y, r, g, b, a);
     }
   }
 }
