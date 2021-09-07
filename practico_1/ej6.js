@@ -12,30 +12,56 @@ let imageData = ctx.createImageData(width, height);
 
 // var my_gradient = ctx.createLinearGradient(0, 0, 170, 0);
 
-let red = 0;
-let green = 0;
-let blue = 0;
+let red = 255;
+let green = 255;
+let blue = 255;
 let alpha = 255;
 
 drawRect(imageData, red, green, blue, alpha);
 
-function drawRect(imageData, r, g, b, a) {  
-    
-  let coeficiente = 255 / (width * 0.5);
-  for (let x = 0; x < width; x++) {
-    if (x <= width * 0.3) {
-      r = coeficiente * x;
-      g = coeficiente * x;
-    } else if (x <= width * 0.6) {
-        coeficiente = 255 / (width * 0.4);
-        if (g > 0) {
-            g = g - coeficiente;
-        }
-    } else {
-        coeficiente = 255 / width;
-        r = r - coeficiente;
-        b = (coeficiente * x) -r;
+function drawRect(imageData, r, g, b, a) {
+  let coeficiente = 255 / (width / 9);
+
+  for (let x = 0; x < width * 0.12; x++) {
+    if (b > 0) b = b - coeficiente;
+    if (r > 0) r = r - coeficiente;
+    for (let y = 0; y < height; y++) {
+      setPixel(imageData, x, y, r, g, b, a);
     }
+  }
+  for (let x = width * 0.12; x < width * 0.24; x++) {
+    if (r < 255) r = r + coeficiente;
+    for (let y = 0; y < height; y++) {
+      setPixel(imageData, x, y, r, g, b, a);
+    }
+  }
+  for (let x = width * 0.24; x < width * 0.37; x++) {
+    if (g > 0) g = g - coeficiente;
+    for (let y = 0; y < height; y++) {
+      setPixel(imageData, x, y, r, g, b, a);
+    }
+  }
+  for (let x = width * 0.37; x < width * 0.5; x++) {
+    if (b < 255) b = b + coeficiente;
+    for (let y = 0; y < height; y++) {
+      setPixel(imageData, x, y, r, g, b, a);
+    }
+  }
+  for (let x = width * 0.5; x < width * 0.62; x++) {
+    if (r > 0) r = r - coeficiente;
+    for (let y = 0; y < height; y++) {
+      setPixel(imageData, x, y, r, g, b, a);
+    }
+  }
+  for (let x = width * 0.62; x < width * 0.75; x++) {
+    if (g < 255) g = g + coeficiente;
+    for (let y = 0; y < height; y++) {
+      setPixel(imageData, x, y, r, g, b, a);
+    }
+  }
+  console.log(r, g, b);
+  for (let x = width * 0.75; x < width * 0.92; x++) {
+    if (r < 255) r = r + coeficiente;
     for (let y = 0; y < height; y++) {
       setPixel(imageData, x, y, r, g, b, a);
     }
